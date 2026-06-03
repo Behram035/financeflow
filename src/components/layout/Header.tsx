@@ -52,7 +52,7 @@ export function Header() {
                   <p className="text-xs text-slate-500">{session.user.email}</p>
                 </div>
                 <button
-                  onClick={() => signOut({ callbackUrl: '/auth/signin' })}
+                  onClick={() => signOut({ callbackUrl: process.env.NEXT_PUBLIC_APP_URL ? `${process.env.NEXT_PUBLIC_APP_URL}/auth/signin` : 'https://financeflow-six-beta.vercel.app/auth/signin' })}
                   className="px-4 py-2 flex items-center gap-1.5 rounded-lg bg-red-400 hover:bg-red-700 text-dark hover:text-white font-medium transition-colors text-sm"
                 >
                   <LogOut className='h-5 w-5' /> Sign Out

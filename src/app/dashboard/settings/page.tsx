@@ -9,7 +9,7 @@ export default function SettingsPage() {
 
   const handleSignOut = async () => {
     if (confirm('Are you sure you want to sign out?')) {
-      await signOut({ callbackUrl: '/auth/signin' });
+      await signOut({ callbackUrl: process.env.NEXT_PUBLIC_APP_URL ? `${process.env.NEXT_PUBLIC_APP_URL}/auth/signin` : 'https://financeflow-six-beta.vercel.app/auth/signin' });
     }
   };
 
