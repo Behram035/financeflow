@@ -22,13 +22,8 @@ export default auth((req: NextRequest & { auth: any }) => {
 
 export const config = {
   matcher: [
-    /*
-     * Match all request paths except for the ones starting with:
-     * - api (API routes)
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - public (public files)
-     */
+    "/dashboard/:path*",
     '/((?!api|_next/static|_next/image|public|auth).*)',
   ],
+  runtime: 'nodejs',
 };
