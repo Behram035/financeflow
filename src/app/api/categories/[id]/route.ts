@@ -8,7 +8,7 @@ import { Types } from 'mongoose';
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const session = await auth();
@@ -18,11 +18,11 @@ export async function GET(
         { status: 401 }
       );
     }
-
+    const { id } = await params;
     await connectDB();
 
     const category = await Category.findOne({
-      _id: new Types.ObjectId(params.id),
+      _id: new Types.ObjectId(id),
       userId: session.user.id,
     });
 
